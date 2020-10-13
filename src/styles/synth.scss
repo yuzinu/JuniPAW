@@ -16,10 +16,11 @@
 .note {
   display: flex;
   height: 34px;
-  width: 36px;
+  min-width: 36px;
   font-size: 24px;
   align-items: center;
 }
+
 /* Customize the label (the pad-wrapper) */
 /* margin-bottom: 12px;*/
 .pad-wrapper {
@@ -30,10 +31,12 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
   /* On mouse-over, add a grey background color */
   &:hover input ~ .pad {
     background-color: #ccc;
   }
+
   /* Hide the browser's default checkbox */
   & input {
     position: absolute;
@@ -42,6 +45,7 @@
     height: 0;
     width: 0;
   }
+
   /* When the checkbox is checked, add a blue background */
   & input:checked ~ .pad {
     background-color: #2196F3;

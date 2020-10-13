@@ -27,7 +27,6 @@ export default document.addEventListener('DOMContentLoaded', function(){
     new Tone.Synth()
   ];
 
-
   // synths[0].oscillator.type = 'triangle';
   // synths[1].oscillator.type = 'sine';
   // synths[2].oscillator.type = 'sawtooth';
@@ -46,7 +45,7 @@ export default document.addEventListener('DOMContentLoaded', function(){
 
   console.log(`${$rows.length}`);
 
-  Tone.Transport.scheduleRepeat(repeat, '16n');
+  Tone.Transport.scheduleRepeat(repeat, '8n');
   Tone.Transport.bpm.value = 128;
   Tone.Transport.start();
 
@@ -59,7 +58,7 @@ export default document.addEventListener('DOMContentLoaded', function(){
           $row = $rows[i],
           $input = $row.querySelector(`label:nth-child(${step + 1}) > input`);
       if ($input.checked) {
-        synth.triggerAttackRelease(note, '16n', time);
+        synth.triggerAttackRelease(note, '8n', time);
       }
     }
     index++;
