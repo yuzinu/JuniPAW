@@ -1,0 +1,61 @@
+.row {
+  /*border: 1px solid red;*/
+  display: flex;
+  height: 34px;
+  width: 1636px;
+  align-items: center;
+  justify-content: center;
+}
+
+.note-wrapper {
+  display: flex;
+  height: 34px;
+  width: 1636px;
+}
+
+.note {
+  display: flex;
+  height: 34px;
+  width: 36px;
+  font-size: 24px;
+  align-items: center;
+}
+/* Customize the label (the pad-wrapper) */
+/* margin-bottom: 12px;*/
+.pad-wrapper {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* On mouse-over, add a grey background color */
+  &:hover input ~ .pad {
+    background-color: #ccc;
+  }
+  /* Hide the browser's default checkbox */
+  & input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  /* When the checkbox is checked, add a blue background */
+  & input:checked ~ .pad {
+    background-color: #2196F3;
+  }
+}
+
+/* Create a custom checkbox */
+.pad {
+  display: flex;
+  top: 0;
+  left: 0;
+  height: 32px;
+  width: 48px;
+  background-color: #eee;
+  border-radius: 3px;
+  border: 1px solid rgba(146, 146, 146, 0.7)
+}
