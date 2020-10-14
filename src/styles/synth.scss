@@ -1,19 +1,13 @@
-.row {
-  /*border: 1px solid red;*/
-  display: flex;
-  height: 34px;
-  width: 1636px;
-  align-items: center;
-  justify-content: center;
-}
-
 .note-wrapper {
   display: flex;
   height: 34px;
-  width: 1636px;
+  width: 1700px;
+  padding-top: 1px;
+  padding-bottom: 1px;
 }
 
 .note {
+  text-indent: 4px;
   display: flex;
   height: 34px;
   min-width: 36px;
@@ -21,11 +15,25 @@
   align-items: center;
 }
 
+.row {
+  display: flex;
+  height: 34px;
+  width: 1664px;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* Customize the label (the pad-wrapper) */
 /* margin-bottom: 12px;*/
 .pad-wrapper {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  width: 50px;
+  padding-left: 1px;
+  padding-right: 1px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -48,18 +56,34 @@
 
   /* When the checkbox is checked, add a blue background */
   & input:checked ~ .pad {
-    background-color: #2196F3;
+    background-color: #042875af;
   }
 }
 
 /* Create a custom checkbox */
 .pad {
   display: flex;
-  top: 0;
-  left: 0;
+  /*top: 0;
+  left: 0; */
   height: 32px;
   width: 48px;
   background-color: #eee;
   border-radius: 3px;
-  border: 1px solid rgba(146, 146, 146, 0.7)
+  border: 1px solid rgba(146, 146, 146, 0.7);
+}
+
+.highlight {
+  border-right: 5px solid rgba(0,0,0,1);
+  height: 29px;
+  width: 45px;
+  /**box-shadow:
+        inset 0 0 50px #fff,      /*inner white */
+        inset 20px 0 80px #f0f,   /* inner left magenta short */
+        inset -20px 0 80px #0ff,  /* inner right cyan short */
+        inset 20px 0 300px #f0f,  /* inner left magenta broad */
+        inset -20px 0 300px #0ff, /* inner right cyan broad */
+        0 0 50px #fff,            /* outer white */
+        -10px 0 80px #f0f,        /* outer left magenta */
+        10px 0 80px #0ff;         /* outer right cyan */
+  **/
 }

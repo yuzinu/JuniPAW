@@ -3,13 +3,12 @@ import "../styles/synth.scss";
 
 export default document.addEventListener('DOMContentLoaded', function(){
   console.clear();
-
-  // UPDATE: there is a problem in chrome with starting audio context
+  /* UPDATE: there is a problem in chrome with starting audio context
   //  before a user gesture. This fixes it.
-  document.documentElement.addEventListener('mousedown', () => {
-    if (Tone.context.state !== 'running')
-      Tone.context.resume();
-  });
+  // document.documentElement.addEventListener('mousedown', () => {
+  //   if (Tone.context.state !== 'running')
+  //     Tone.context.resume();
+  // }); */
 
   const synths = [
     new Tone.Synth(),
@@ -56,12 +55,20 @@ export default document.addEventListener('DOMContentLoaded', function(){
       let synth = synths[i],
           note = notes[i],
           $row = $rows[i],
-          $input = $row.querySelector(`label:nth-child(${step + 1}) > input`);
+          $label = $row.querySelector(`label:nth-child(${step + 1})`),
+          $input = $label.querySelector("input");
+
+      $label.classList.add("highlight");
+
       if ($input.checked) {
         synth.triggerAttackRelease(note, '8n', time);
       }
+
+      setTimeout(() => {
+        $label.classList.remove("highlight");
+      }, 200);
     }
     index++;
+    console.log(index);
   }
-
 });

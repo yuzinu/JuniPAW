@@ -1,17 +1,6 @@
-body > div {
-  text-align: center;
-  margin-top: 4rem; }
-  body > div > div {
-    border: 1px solid red; }
-    body > div > div + div {
-      margin-top: 1rem; }
-    body > div > div > input {
-      background-color: purple;
-      border: solid 1px red; }
+html,body,div,label,h1{height:inherit;width:inherit;padding:0;margin:0}.soundboard{height:100vh;width:100vw;display:flex;justify-content:center;align-items:center}.synth{display:flex;flex-wrap:wrap;height:442px;width:1636px}
 
-input:checked {
-  border: 1px solid blue;
-  background: blue; }
+.row{display:flex;height:34px;width:1636px;align-items:center;justify-content:center}.note-wrapper{display:flex;height:34px;width:1636px}.note{display:flex;height:34px;min-width:36px;font-size:24px;align-items:center}.pad-wrapper{position:relative;display:block;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.pad-wrapper:hover input ~ .pad{background-color:#ccc}.pad-wrapper input{position:absolute;opacity:0;cursor:pointer;height:0;width:0}.pad-wrapper input:checked ~ .pad{background-color:#2196F3}.pad{display:flex;top:0;left:0;height:32px;width:48px;background-color:#eee;border-radius:3px;border:1px solid rgba(146,146,146,0.7)}
 
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2luZGV4LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQTtBQUNBLG1CQUFtQjtBQUNuQjtBQUNBLDBCQUEwQjtBQUMxQjtBQUNBLHVCQUF1QjtBQUN2QjtBQUNBO0FBQ0EsNEJBQTRCOztBQUU1QjtBQUNBO0FBQ0EsbUJBQW1CIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSA+IGRpdiB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogNHJlbTsgfVxuICBib2R5ID4gZGl2ID4gZGl2IHtcbiAgICBib3JkZXI6IDFweCBzb2xpZCByZWQ7IH1cbiAgICBib2R5ID4gZGl2ID4gZGl2ICsgZGl2IHtcbiAgICAgIG1hcmdpbi10b3A6IDFyZW07IH1cbiAgICBib2R5ID4gZGl2ID4gZGl2ID4gaW5wdXQge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogcHVycGxlO1xuICAgICAgYm9yZGVyOiBzb2xpZCAxcHggcmVkOyB9XG5cbmlucHV0OmNoZWNrZWQge1xuICBib3JkZXI6IDFweCBzb2xpZCBibHVlO1xuICBiYWNrZ3JvdW5kOiBibHVlOyB9XG4iXSwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=main.css.map*/
