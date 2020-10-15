@@ -5,7 +5,7 @@ import Synth from "./scripts/synth";
 document.addEventListener('DOMContentLoaded', function(){
   let playButton = document.getElementById("play");
 
-  playButton.addEventListener('click', () => {
+  playButton.addEventListener('mousedown', () => {
     if (Tone.Transport.state !== 'started') {
       Tone.Transport.start();
       playButton.innerHTML = "Pause";
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
   let clearButton = document.getElementById("clear");
 
-  clearButton.addEventListener('click', () => {
+  clearButton.addEventListener('mousedown', () => {
     let $allPads = document.body.querySelectorAll(`input`);
     $allPads.forEach($pad => {
       $pad.checked = "";
