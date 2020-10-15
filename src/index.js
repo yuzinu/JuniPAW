@@ -6,7 +6,10 @@ document.addEventListener('DOMContentLoaded', function(){
   let playButton = document.getElementById("play");
 
   playButton.addEventListener('click', () => {
-    if (Tone.context.state !== 'running') {
+    if (Tone.Transport.state !== 'started') {
+      Tone.Transport.start();
+      playButton.innerHTML = "Pause";
+    } else if (Tone.context.state !== 'running') {
       Tone.context.resume();
       playButton.innerHTML = "Pause";
     } else if (Tone.Transport.state === "paused") {
@@ -28,9 +31,13 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   document.body.onkeydown = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     if (e.code === "Space") {
-      if (Tone.context.state !== 'running') {
+      e.preventDefault();
+      if (Tone.Transport.state !== 'started') {
+        Tone.Transport.start();
+        playButton.innerHTML = "Pause";
+      } else if (Tone.context.state !== 'running') {
         Tone.context.resume();
         playButton.innerHTML = "Pause";
       } else if (Tone.Transport.state === "paused") {

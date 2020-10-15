@@ -1,4 +1,4 @@
-html, body, div, span, h1, label, input, button {
+html, body, div, span, h1, label, input, select, button {
   height: inherit;
   width: inherit;
   padding: 0;
@@ -31,11 +31,13 @@ html, body, div, span, h1, label, input, button {
 .playback-wrapper {
   display: flex;
   height: 96px;
-  width: 288px;
+  width: 672px;
+  box-sizing: border-box;
   justify-content: space-between;
+  align-items: center;
 }
 
-#play, #clear {
+#play, #clear, #random, #algos, #sort {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,4 +47,10 @@ html, body, div, span, h1, label, input, button {
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid rgba(146, 146, 146, 0.7);
+}
+
+.algo-wrapper {
+  display: flex;
+  height: 48px;
+  width: 192px;
 }

@@ -1,4 +1,5 @@
 import * as Tone from 'tone';
+import "@babel/polyfill";
 import "../styles/synth.scss";
 
 export default document.addEventListener('DOMContentLoaded', function(){
@@ -46,12 +47,129 @@ export default document.addEventListener('DOMContentLoaded', function(){
 
   Tone.Transport.scheduleRepeat(repeat, '8n');
   Tone.Transport.bpm.value = 128;
-  Tone.Transport.start();
+
+  let randomButton = document.getElementById("random");
+
+  randomButton.addEventListener('click', () => {
+    $rows.forEach($row => {
+      let $label = $row.querySelector(`label:nth-child(${Math.ceil(Math.random() * 32)})`),
+          $input = $label.querySelector("input");
+
+      $input.checked = "checked";
+    });
+  });
+
+  async function nextFrame() {
+    return new Promise(resolve => {
+        requestAnimationFrame(resolve);
+    });
+  }
+
+  async function timeout(ms) {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+  }
+
+  let sortButton = document.getElementById("sort");
+  let isSorting = false;
+  let frame;
+
+  sortButton.addEventListener('click', () => {
+    // console.log(sorting);
+    if (!isSorting) {
+      isSorting = true;
+      frame = requestAnimationFrame(bubbleSort);
+    } else {
+      isSorting = false;
+      cancelAnimationFrame(frame);
+    }
+  });
+    
+  // async function bubbleSort() {
+  async function bubbleSort() {
+    
+    let $keys = Array.from($rows);
+    let sorted = false;
+    
+    while (!sorted) {
+      sorted = true;
+      for (let i = $keys.length - 1; i > 0; i--) {
+        let synth = synths[i],
+        nextSynth = synths[i - 1],
+        note = notes[i],
+        nextNote = notes[i - 1],
+        $row = $rows[i],
+        $nextRow = $rows[i - 1],
+        $key = Array.from($row.getElementsByTagName('input')),
+        $nextKey = Array.from($nextRow.getElementsByTagName('input')),
+        $pad = $key.find(pad => pad.checked),
+        $nextPad = $nextKey.find(pad => pad.checked),
+        // $pads = Array.from($row.getElementsByTagName('span')),
+        $label = $pad.nextElementSibling,
+        $nextLabel = $nextPad.nextElementSibling;
+        
+
+
+        $label.classList.remove("pad");
+        $label.classList.add("outline");
+        synth.triggerAttackRelease(note, '16n');
+        frame = await nextFrame();
+        await timeout(50);
+        // nextFrame();
+        // timeout(50);
+        // debugger;
+
+        $label.classList.remove("outline");
+        $label.classList.add("pad");
+        frame = await nextFrame();
+        await timeout(50);
+        // nextFrame();
+        // timeout(50);
+        
+        $nextLabel.classList.remove("pad");
+        $nextLabel.classList.add("outline");
+        nextSynth.triggerAttackRelease(nextNote, '16n');
+        frame = await nextFrame();
+        await timeout(50);
+        // nextFrame();
+        // timeout(50);
+
+        // debugger;
+
+        $nextLabel.classList.remove("outline");
+        $nextLabel.classList.add("pad");
+        frame = await nextFrame();
+        await timeout(50);
+        // nextFrame();
+        // timeout(50);
+        
+        if ($key.indexOf($pad) > $nextKey.indexOf($nextPad)) {
+          sorted = false;
+          $key[$nextKey.indexOf($nextPad)].checked = "checked";
+          $nextKey[$key.indexOf($pad)].checked = "checked";
+          $pad.checked = "";
+          $nextPad.checked = "";
+        }
+        frame = await nextFrame();
+        console.log("hit in for loop");
+        
+        if (isSorting === false) {
+          console.log("inside conditional");
+          return cancelAnimationFrame(frame);
+        }
+      }
+      frame = await nextFrame();
+      console.log("hit in while loop");
+    }
+    frame = requestAnimationFrame(bubbleSort);
+    console.log("hit in function")
+    if (sorted) cancelAnimationFrame(frame);
+  }
 
   function repeat(time) {
     let step = index % 32;
     for (let i = 0; i < $rows.length; i++) {
-      // Tone.Transport.bpm.value =
       let synth = synths[i],
           note = notes[i],
           $row = $rows[i],
@@ -61,7 +179,7 @@ export default document.addEventListener('DOMContentLoaded', function(){
       $label.classList.add("highlight");
 
       if ($input.checked) {
-        synth.triggerAttackRelease(note, '8n', time);
+        synth.triggerAttackRelease(note, ' 16n', time);
       }
 
       setTimeout(() => {

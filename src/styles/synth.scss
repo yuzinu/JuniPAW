@@ -1,24 +1,27 @@
 .note-wrapper {
   display: flex;
-  height: 34px;
+  height: 36px;
   width: 1700px;
   padding-top: 1px;
   padding-bottom: 1px;
+  box-sizing: border-box;
 }
 
 .note {
   text-indent: 4px;
   display: flex;
-  height: 34px;
+  height: 36px;
   min-width: 36px;
+  box-sizing: border-box;
   font-size: 24px;
   align-items: center;
 }
 
 .row {
   display: flex;
-  height: 34px;
+  height: 36px;
   width: 1664px;
+  box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
 }
@@ -30,10 +33,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 34px;
-  width: 50px;
-  padding-left: 1px;
-  padding-right: 1px;
+  height: 36px;
+  width: 52px;
+  padding: 1px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -65,25 +67,34 @@
   display: flex;
   /*top: 0;
   left: 0; */
-  height: 32px;
-  width: 48px;
+  height: 34px;
+  width: 50px;
+  box-sizing: border-box;
   background-color: #eee;
   border-radius: 3px;
   border: 1px solid rgba(146, 146, 146, 0.7);
 }
 
 .highlight {
-  border-right: 5px solid rgba(0,0,0,1);
-  height: 29px;
-  width: 45px;
-  /**box-shadow:
-        inset 0 0 50px #fff,      /*inner white */
-        inset 20px 0 80px #f0f,   /* inner left magenta short */
-        inset -20px 0 80px #0ff,  /* inner right cyan short */
-        inset 20px 0 300px #f0f,  /* inner left magenta broad */
-        inset -20px 0 300px #0ff, /* inner right cyan broad */
-        0 0 50px #fff,            /* outer white */
-        -10px 0 80px #f0f,        /* outer left magenta */
-        10px 0 80px #0ff;         /* outer right cyan */
-  **/
+  border-right: 5px solid rgb(250, 32, 32);
+  width: 52px;
+  box-sizing: border-box;
+
+  /*box-shadow:
+        inset 0 0 50px #fff,      inner white
+        inset 20px 0 80px #f0f,   inner left magenta short
+        inset -20px 0 80px #0ff,  inner right cyan short
+        inset 20px 0 300px #f0f,  inner left magenta broad
+        inset -20px 0 300px #0ff, inner right cyan broad
+        0 0 50px #fff,            outer white
+        -10px 0 80px #f0f,        outer left magenta
+        10px 0 80px #0ff;         outer right cyan */
+}
+
+.outline {
+  display: flex;
+  background-color: rgb(250, 32, 32);
+  height: 34px;
+  width: 50px;
+  box-sizing: border-box;
 }
