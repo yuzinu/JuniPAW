@@ -3,13 +3,13 @@ import "@babel/polyfill";
 import "../styles/synth.scss";
 
 export default document.addEventListener('DOMContentLoaded', function(){
-  console.clear();
   /* UPDATE: there is a problem in chrome with starting audio context
   //  before a user gesture. This fixes it.
   // document.documentElement.addEventListener('mousedown', () => {
   //   if (Tone.context.state !== 'running')
   //     Tone.context.resume();
   // }); */
+  
   async function nextFrame() {
     return new Promise(resolve => {
         requestAnimationFrame(resolve);
@@ -54,8 +54,6 @@ export default document.addEventListener('DOMContentLoaded', function(){
   notes = ['C4', 'B3', 'A#3', 'A3', 'G#3', 'G3', 'F#3', 'F3', 'E3', 'D#3', 'D3', 'C#3','C3'];
   let index = 0;
 
-  console.log(`${$rows.length}`);
-
   Tone.Transport.scheduleRepeat(repeat, '8n');
   Tone.Transport.bpm.value = 128;
 
@@ -82,19 +80,19 @@ export default document.addEventListener('DOMContentLoaded', function(){
         }
       }
       
-      $label.addEventListener('click', async (e) => {
+      $label.addEventListener('click', e => {
         e.preventDefault();
       })
       
       $label.addEventListener('mousedown', e => {
         e.preventDefault();
-        $input.checked = !$input.checked;        
+        $input.checked = !$input.checked;
       })
 
-      $span.addEventListener('mousedown', async (e) => {
+      $span.addEventListener('mousedown', async e => {
         e.preventDefault();
         triggerSound();
-        await timeout(50);
+        await timeout(25);
       });
     });
   });
@@ -112,7 +110,6 @@ export default document.addEventListener('DOMContentLoaded', function(){
     }
   });
     
-  // async function bubbleSort() {
   async function bubbleSort() {
     let $keys = Array.from($rows);
     let sorted = false;
@@ -199,6 +196,6 @@ export default document.addEventListener('DOMContentLoaded', function(){
       }, 200);
     }
     index++;
-    console.log(index);
+    // console.log(index);
   }
 });

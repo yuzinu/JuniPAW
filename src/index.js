@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   document.body.onkeydown = (e) => {
-    // e.preventDefault()
     if (e.code === "Space") {
       e.preventDefault();
       if (Tone.Transport.state !== 'started') {
